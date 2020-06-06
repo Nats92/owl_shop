@@ -1,3 +1,9 @@
-<% @items.each do |i| %>
-  <%= link_to i.name, item_path(i) %>
-<% end %>
+<ol>
+  <% @items.each do |i| %>
+    <li>
+      <%= link_to i.name, item_path(i) %>
+      <%= link_to "Удалить", i, method: :delete, data: { confirm: "Уверены?" } %>
+    </li>
+  <% end %>
+  <p><a href='new'>Добавить совушку</a></p>
+</ol>
