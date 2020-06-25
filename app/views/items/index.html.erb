@@ -1,9 +1,13 @@
-<ol>
-  <% @items.each do |i| %>
-    <li>
-      <%= link_to i.name, item_path(i) %>
-      <%= link_to "Удалить", i, method: :delete, data: { confirm: "Уверены?" } %>
-    </li>
+<table>
+  <% @items.each_with_index do |i, idx| %>
+    <tr>
+      <td><%= idx + 1 %></td>
+      <td><%= link_to i.name, item_path(i) %></td>
+      <td><img width='100px' height='auto' src='<%= i.image.url(:thumb) %>'></td>
+      <td><%= i.price %></td>
+      <td><%= i.description %></td>
+      <td><%= link_to "Удалить", i, method: :delete, data: { confirm: "Уверены?" } %></td>
+    </tr>
   <% end %>
-  <p><a href='new'>Добавить совушку</a></p>
-</ol>
+  <tr><td colspan='6'><a href='items/new'>Добавить совушку</a></td></tr>
+</table>

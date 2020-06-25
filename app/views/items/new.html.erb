@@ -1,7 +1,8 @@
 <h1>Create new item</h1>
-<%= form_for @item do |f| %>
+<%= form_for @item, :html => { :multipart => true } do |f| %>
   <p><label>Название: <%= f.text_field :name %></label></p>
   <p><label>Цена: <%= f.text_field :price %></label></p>
+  <p><label>Изображение: <%= f.file_field :image %></label></p>
   <p><label>Описание: <%= f.text_field :description %></label></p>
   <%= f.submit "Создать товар" %>
 <% end %>

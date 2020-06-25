@@ -1,4 +1,5 @@
 <h2><%= @item.name %></h2>
-<span>Цена: <%= @item.price %></span>
-<span>Описание: <%= @item.description %></span>
+<%= image_tag @item.image.url(:medium) %>
+<p>Цена: <%= @item.price %></p>
+<p>Описание: <%= @item.description %></p>
 <p><a href='<%= @item.id %>/edit'>Редактировать</a></p>

@@ -3,11 +3,14 @@ class ItemsController < ApplicationController
   before_action :find_item, only: [:show, :edit, :update, :destroy]
 
   def index
-    @items = Item.all
+    @items = Item
+    @items = @items.where('price > ?', params[:price_from]) if params[:price_from]
+    @items = @items.where('created_at > ?', 1.day.ago)      if params[:today]
+    @items = @items.order('price')
   end
 
   def expensive
-    @items = Item.where('price > ?', 20000)
+    @items = Item.where('price > 20000')
     render "index"
   end
 
@@ -55,7 +58,7 @@ class ItemsController < ApplicationController
 
   private
     def require_params
-      params.require(:item).permit(:name, :price, :description)
+      params.require(:item).permit(:name, :price, :description, :image)
     end
 
     def find_item

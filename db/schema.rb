@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_14_151644) do
+ActiveRecord::Schema.define(version: 2020_06_24_134241) do
 
   create_table "blog_posts", force: :cascade do |t|
     t.string "title"
@@ -38,9 +38,12 @@ ActiveRecord::Schema.define(version: 2020_06_14_151644) do
     t.string "name"
     t.float "price"
     t.string "description"
-    t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["name"], name: "index_items_on_name"
     t.index ["price"], name: "index_items_on_price"
   end
